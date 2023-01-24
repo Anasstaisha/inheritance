@@ -8,47 +8,59 @@ public class ProductRepositoryTest {
 
     Product product1 = new Product(75, "Смартфон", 75_000);
     Product product2 = new Product(12, "Книга", 470);
-    Product product3 = new Product(80, "Конструктор", 7_500);
+    Product product3 = new Product(80, "Игрушка", 7_500);
 
 
     @Test
-    public void getProduct() {
+    public void shouldAdd() {
         ProductRepository repo = new ProductRepository();
+
         repo.save(product1);
         repo.save(product2);
         repo.save(product3);
 
         Product[] expected = {product1, product2, product3};
-        Product[] actual = repo.getItems();
+        Product[] actual = repo.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
-    }
 
+    }
     @Test
-    public void removeProduct() {
+    public void shouldRemoveProduct() {
         ProductRepository repo = new ProductRepository();
         repo.save(product1);
         repo.save(product2);
         repo.save(product3);
-        repo.removeById(product2.getId());
+        repo.removeById(product1.getId());
 
         Product[] expected = {product2, product3};
-        Product[] actual = repo.getItems();
+        Product[] actual = repo.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void matchProduct() {
-        ProductManager repo = new ProductManager();
-        repo.searchBy(String.valueOf(product1));
-        repo.searchBy(String.valueOf(product2));
-        repo.searchBy(String.valueOf(product3));
+    public void shouldRemoveProductIfOne() {
+        ProductRepository repo = new ProductRepository();
+        repo.save(product1);
+        repo.removeById(product1.getId());
 
-        Product[] expected = {product2};
-        Product[] actual = repo.getItems();
+        Product[] expected = {};
+        Product[] actual = repo.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
-
     }
+
+    /*@Test
+    public void shouldNotRemoveProductIfDidNotSave() {
+        ProductRepository repo = new ProductRepository();
+        repo.save(product2);
+        repo.removeById(product1.getId());
+
+        Product[] expected = {};
+        Product[] actual = repo.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }*/
+
 }

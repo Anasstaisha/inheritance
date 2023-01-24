@@ -1,9 +1,9 @@
 package ru.netology.domain;
 
 public class Book extends Product {
-    protected int author;
+    protected String author;
 
-    public Book(int id, String name, int price, int author) {
+    public Book(int id, String name, int price, String author) {
         super(id, name, price);
         this.author = author;
     }
