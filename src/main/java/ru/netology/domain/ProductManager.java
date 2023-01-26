@@ -13,7 +13,7 @@ public class ProductManager {
     }
 
     public void add(Product product) {
-        repository.save(product);
+        repository.add(product);
     }
 
     public Product[] searchBy(String text) {
