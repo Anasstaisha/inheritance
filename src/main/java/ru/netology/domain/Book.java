@@ -8,27 +8,8 @@ public class Book extends Product {
         this.author = author;
     }
 
-    public  int getId() {
-        return  id;
-    }
+    /* public String getAuthor() {
+        return author;
+    }*/
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
 }

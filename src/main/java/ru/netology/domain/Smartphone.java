@@ -7,7 +7,8 @@ public class Smartphone extends Product {
         super(id, name, price);
         this.mft = mft;
     }
-    public String getMft() {
+
+    /*public String getMft() {
     return mft;
-    }
+    }*/
 }

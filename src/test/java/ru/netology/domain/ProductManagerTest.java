@@ -6,6 +6,9 @@ import ru.netology.repository.ProductRepository;
 
 public class ProductManagerTest {
 
+    ProductRepository repo = new ProductRepository();
+    ProductManager manager = new ProductManager(repo);
+
     Book book1 = new Book(72, "Lord of the rings 1", 100, "Tolkien");
     Book book2 = new Book(13, "The Silmarillion", 150, "Tolkien");
     Book book3 = new Book(55, "Lord of the rings 3", 200, "Tolkien");
@@ -14,9 +17,6 @@ public class ProductManagerTest {
 
     @Test
     public void shouldSearchIfMatchesSeveral() {
-        ProductRepository repo = new ProductRepository();
-        ProductManager manager = new ProductManager(repo);
-
         manager.add(book1);
         manager.add(book2);
         manager.add(book3);
@@ -31,9 +31,6 @@ public class ProductManagerTest {
 
     @Test
     public void shouldSearchIfNoMatches() {
-        ProductRepository repo = new ProductRepository();
-        ProductManager manager = new ProductManager(repo);
-
         manager.add(book1);
         manager.add(book2);
         manager.add(book3);
@@ -47,9 +44,6 @@ public class ProductManagerTest {
 
     @Test
     public void shouldNotSearchIfDidNotAdd() {
-        ProductRepository repo = new ProductRepository();
-        ProductManager manager = new ProductManager(repo);
-
         Product[] expected = {};
         Product[] actual = manager.searchBy("null");
 
@@ -59,9 +53,6 @@ public class ProductManagerTest {
 
     @Test
     public void shouldSearchIfOne() {
-        ProductRepository repo = new ProductRepository();
-        ProductManager manager = new ProductManager(repo);
-
         manager.add(book1);
         manager.add(book2);
         manager.add(book3);
